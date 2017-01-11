@@ -1,0 +1,17 @@
+version: '2.1'
+
+services:
+  db:
+    image: helloworldweb_db:dev
+    labels:
+      - "com.microsoft.visualstudio.targetoperatingsystem=windows"
+  helloworldweb:
+    image: helloworldweb:dev
+    build:
+      args:
+        source: ${DOCKER_BUILD_SOURCE}
+    volumes:
+      - .:C:\inetpub\wwwroot
+      - ~\msvsmon:C:\msvsmon:ro
+    labels:
+      - "com.microsoft.visualstudio.targetoperatingsystem=windows"
