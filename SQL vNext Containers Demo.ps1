@@ -64,6 +64,8 @@ docker run -d -p 14332:1433 -e sa_password=$saPassword -e ACCEPT_EULA=Y sampleim
 
 
 # Connect to database via SSMS; show SampleDB01.dbo.Table01
+$containerID=(docker ps -a|Out-GridView -PassThru).Substring(0,12)
+docker inspect --format='{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}' $containerID
 
 
 # Login to Azure Container Registry
