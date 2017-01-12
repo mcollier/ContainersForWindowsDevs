@@ -6,8 +6,8 @@ $acrRegistry="mcollier-on.azurecr.io"
 $acrUser="mcollier"
 
 # Supply Passwords to use. Get ACR password from Azure portal or AZ CLI.
-$saPassword=(Get-Credential).GetNetworkCredential().Password
-$acrPassword=(Get-Credential).GetNetworkCredential().Password
+$saPassword=(Get-Credential -Message 'Enter sa password for database.').GetNetworkCredential().Password
+$acrPassword=(Get-Credential -Message "Enter Azure Container Registry ($acrRegistry) password").GetNetworkCredential().Password
 
 # Search Docker Hub for MS SQL Server container images
 docker search microsoft/mssql
