@@ -4,7 +4,7 @@ services:
   db:
     labels:
       - "com.microsoft.visualstudio.targetoperatingsystem=windows"
-  helloworldweb:
+  web:
     build:
       args:
         source: ${DOCKER_BUILD_SOURCE}

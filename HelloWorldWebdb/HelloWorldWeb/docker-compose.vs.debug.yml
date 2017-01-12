@@ -2,11 +2,11 @@ version: '2.1'
 
 services:
   db:
-    image: helloworldweb_db:dev
+    image: helloworld_db:dev
     labels:
       - "com.microsoft.visualstudio.targetoperatingsystem=windows"
-  helloworldweb:
-    image: helloworldweb:dev
+  web:
+    image: helloworld_web:dev
     build:
       args:
         source: ${DOCKER_BUILD_SOURCE}

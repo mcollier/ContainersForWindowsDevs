@@ -2,15 +2,15 @@ version: '2.1'
 
 services:
   db:
-    image: helloworldweb_db
+    image: helloworld_db
     build:
       context: ./db
       dockerfile: Dockerfile
     ports:
        - "1433:1433"
 
-  helloworldweb:
-    image: helloworldweb
+  web:
+    image: helloworld_web
     build:
       context: .
       dockerfile: Dockerfile

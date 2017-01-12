@@ -2,7 +2,7 @@ version: '2.1'
 
 services:
   db:
-  helloworldweb:
+  web:
     ports:
       - "80"
 networks:
