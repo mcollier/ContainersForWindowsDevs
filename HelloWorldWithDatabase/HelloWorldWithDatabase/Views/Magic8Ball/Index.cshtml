@@ -1,0 +1,17 @@
+﻿
+@{
+    ViewBag.Title = "Crazy 8 Ball Do Your Thing";
+}
+
+<h3>Ask the all mighty Crazy 8 Ball a question . . . if you dare!</h3>
+<img src="~/images/Magic8Ball.png"/>
+@if (ViewBag.ErrorMessage == null)
+{
+    <form name="input" action="" method="post">
+        Your Question: <input type="text" name="question" />
+        <input type="submit" value="Submit" />
+    </form>
+}
+<h2>Your Answer</h2>
+<p>@ViewData["Answer"]</p>
+

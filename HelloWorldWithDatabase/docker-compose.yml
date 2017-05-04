@@ -1,0 +1,24 @@
+version: '2.1'
+
+services:
+  db:
+    image: helloworld_db
+    build:
+      context: ./HelloWorldWithDatabase/db
+      dockerfile: Dockerfile
+    ports:
+       - "1433:1433"
+
+  web:
+    image: helloworld_web
+    build:
+      context: .\HelloWorldWithDatabase
+      dockerfile: Dockerfile
+    depends_on:
+      - "db"
+
+  api:
+    image: api
+    build:
+      context: .\Api
+      dockerfile: Dockerfile

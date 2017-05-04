@@ -2,52 +2,52 @@
 # Thank you Keith Mayer --> https://github.com/robotechredmond/Azure-PowerShell-Snippets/blob/master/SQL%20vNext%20Containers%20Demo.ps1
 
 # Set variables
-$acrRegistry="mcollier-on.azurecr.io"
-$acrUser="mcollier"
+$acrRegistry = "mcollierstirtrek.azurecr.io"
+$acrUser = "mcollierstirtrek"
 
 # Supply Passwords to use. Get ACR password from Azure portal or AZ CLI.
-$saPassword=(Get-Credential -Message 'Enter sa password for database.').GetNetworkCredential().Password
-$acrPassword=(Get-Credential -Message "Enter Azure Container Registry ($acrRegistry) password").GetNetworkCredential().Password
+$saPassword = (Get-Credential -Message 'Enter sa password for database.').GetNetworkCredential().Password
+$acrPassword = ""
 
 # Search Docker Hub for MS SQL Server container images
 docker search microsoft/mssql
 
 # Pull MS SQL Server vNext for Windows container image to a local copy
-docker pull microsoft/mssql-server-windows
+docker pull microsoft/mssql-server-windows-developer
 
 # Display list of local images
 docker images
 
 # Start a new container from the container image
-docker run -d -p 14331:1433 -e sa_password=$saPassword -e ACCEPT_EULA=Y microsoft/mssql-server-windows
+docker run -d -p 1433:1433 -e sa_password=$saPassword -e ACCEPT_EULA=Y microsoft/mssql-server-windows
 
 # Display running containers
 docker ps
 
 # Select a container
-$containerID=(docker ps -a|Out-GridView -PassThru).Substring(0,12)
+$containerID = (docker ps -a|Out-GridView -PassThru).Substring(0, 12)
 
 # Get container IP address - connect to this address from within the local VM using SSMS
 docker inspect --format='{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}' $containerID
 
-# TSQL - create sample database
+#-- TSQL - create sample database
 CREATE DATABASE [SampleDB01];
 GO
 USE [SampleDB01];
 GO
 CREATE TABLE dbo.Table01
-(PKID INT IDENTITY(1,1) PRIMARY KEY,
- ColA VARCHAR(10),
- ColB VARCHAR(10),
- ColC DATETIME);
+(PKID INT IDENTITY(1, 1) PRIMARY KEY,
+    ColA VARCHAR(10),
+    ColB VARCHAR(10),
+    ColC DATETIME);
 GO
 INSERT INTO dbo.Table01
-(ColA,ColB,ColC)
+(ColA, ColB, ColC)
 VALUES
-(REPLICATE('A',10),REPLICATE('B',10),GETUTCDATE());
+(REPLICATE('A', 10), REPLICATE('B', 10), GETUTCDATE());
 GO 10
 
-# TSQL - Show records with random data in table in sample database
+#-- TSQL - Show records with random data in table in sample database
 SELECT * FROM dbo.Table01
 
 # Stop the container
@@ -60,11 +60,11 @@ docker commit $containerID sampleimage01
 docker images
 
 # Start new container from committed image
-docker run -d -p 14332:1433 -e sa_password=$saPassword -e ACCEPT_EULA=Y sampleimage01
+docker run -d -p 1433:1433 -e sa_password=$saPassword -e ACCEPT_EULA=Y sampleimage01
 
 
 # Connect to database via SSMS; show SampleDB01.dbo.Table01
-$containerID=(docker ps -a|Out-GridView -PassThru).Substring(0,12)
+$containerID = (docker ps -a|Out-GridView -PassThru).Substring(0, 12)
 docker inspect --format='{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}' $containerID
 
 

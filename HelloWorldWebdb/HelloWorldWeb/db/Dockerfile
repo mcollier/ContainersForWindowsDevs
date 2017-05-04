@@ -1,4 +1,4 @@
-﻿FROM microsoft/mssql-server-windows
+﻿FROM microsoft/mssql-server-windows-developer
 
 # SQL environmental variables
 ENV sa_password "Password123"
