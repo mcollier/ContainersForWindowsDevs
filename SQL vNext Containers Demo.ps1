@@ -7,7 +7,7 @@ $acrUser = "mcollierstirtrek"
 
 # Supply Passwords to use. Get ACR password from Azure portal or AZ CLI.
 $saPassword = (Get-Credential -Message 'Enter sa password for database.').GetNetworkCredential().Password
-$acrPassword = ""
+$acrPassword = "1T//K8S/=/hf=GPL+0FFTDr/+cISzM/J"
 
 # Search Docker Hub for MS SQL Server container images
 docker search microsoft/mssql
@@ -19,7 +19,7 @@ docker pull microsoft/mssql-server-windows-developer
 docker images
 
 # Start a new container from the container image
-docker run -d -p 1433:1433 -e sa_password=$saPassword -e ACCEPT_EULA=Y microsoft/mssql-server-windows
+docker run -d -p 1433:1433 -e sa_password=$saPassword -e ACCEPT_EULA=Y microsoft/mssql-server-windows-developer
 
 # Display running containers
 docker ps
