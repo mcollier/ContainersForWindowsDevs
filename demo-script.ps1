@@ -17,7 +17,7 @@ docker pull microsoft/mssql-server-windows
 # Show the Client and Server version for Docker.
 docker version
 	
-# Show the Server OS/Arch setting � either �windows/amd64� or �linux/amd64�.
+# Show the Server OS/Arch setting, either 'windows/amd64' or 'linux/amd64'.
 & 'C:\Program Files\Docker\Docker\DockerCli.exe' -SwitchDaemon	
 
 # Show the Server OS/Arch setting has changed.
@@ -38,7 +38,7 @@ docker pull microsoft/dotnet-samples:dotnetapp-nanoserver
 docker rmi microsoft/iis	
 
 
-##2 � Manage Containers
+##2 Manage Containers
 
 # Run a container
 docker run microsoft/dotnet-samples:dotnetapp-nanoserver	
@@ -51,19 +51,19 @@ $containerID = (docker ps -a |Out-GridView -PassThru).Substring(0, 12)
 docker start -ia $containerID
 
 
-##3 � Dockerize a .NET Console Application
+##3 Dockerize a .NET Console Application
 
 # Move to the project directory.
 cd 'C:\Projects\ContainersForWindowsDevs\HelloWorldConsole\HelloWorldConsole\'
 
-# Create the image (don�t forget the �.�)
-docker build -t helloworldconsole:codemash2017 .
+# Create the image (don't forget the '.')
+docker build -t helloworldconsole:stirtrek2017 .
 
 # Show the image just created.
 docker images
 
-# Run the image, specifying the input parameter. Using �--rm� will remove the container after it exits.
-docker run --rm helloworldconsole:codemash2017 �mike�
+# Run the image, specifying the input parameter. Using "--rm" will remove the container after it exits.
+docker run --rm helloworldconsole:stirtrek2017 "mike"
 
 # Show the container is not available
 docker ps -a
