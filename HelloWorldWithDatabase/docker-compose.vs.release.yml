@@ -1,0 +1,23 @@
+version: '2.1'
+
+services:
+  db:
+    labels:
+      - "com.microsoft.visualstudio.targetoperatingsystem=windows"
+  web:
+    build:
+      args:
+        source: ${DOCKER_BUILD_SOURCE}
+    volumes:
+      - ~\msvsmon:C:\msvsmon:ro
+    labels:
+      - "com.microsoft.visualstudio.targetoperatingsystem=windows"
+
+  api:
+    build:
+      args:
+        source: ${DOCKER_BUILD_SOURCE}
+    volumes:
+      - ~\msvsmon:C:\msvsmon:ro
+    labels:
+      - "com.microsoft.visualstudio.targetoperatingsystem=windows"
