@@ -23,7 +23,7 @@ docker version
 # Show the Server OS/Arch setting has changed.
 docker version
 	
-# Switch to Hyper-V Manager	Show the �MobyLinuxVM� running.
+# Switch to Hyper-V Manager	Show the 'MobyLinuxVM' running.
 
 # Switch back to being able to run Windows containers.
 & 'C:\Program Files\Docker\Docker\DockerCli.exe' -SwitchDaemon	
