@@ -2,12 +2,12 @@
 # Thank you Keith Mayer --> https://github.com/robotechredmond/Azure-PowerShell-Snippets/blob/master/SQL%20vNext%20Containers%20Demo.ps1
 
 # Set variables
-$acrRegistry = "mcollierstirtrek.azurecr.io"
-$acrUser = "mcollierstirtrek"
+$acrRegistry = "mcollierwindevug.azurecr.io"
+$acrUser = "mcollierwindevug"
 
 # Supply Passwords to use. Get ACR password from Azure portal or AZ CLI.
 $saPassword = (Get-Credential -Message 'Enter sa password for database.').GetNetworkCredential().Password
-$acrPassword = "1T//K8S/=/hf=GPL+0FFTDr/+cISzM/J"
+$acrPassword = "myL+7ffVtxPu+JOdfvTEFSPgIoTh9sg6"
 
 # Search Docker Hub for MS SQL Server container images
 docker search microsoft/mssql

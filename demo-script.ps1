@@ -57,13 +57,13 @@ docker start -ia $containerID
 cd 'C:\Projects\ContainersForWindowsDevs\HelloWorldConsole\HelloWorldConsole\'
 
 # Create the image (don't forget the '.')
-docker build -t helloworldconsole:stirtrek2017 .
+docker build -t helloworldconsole:windevug .
 
 # Show the image just created.
 docker images
 
 # Run the image, specifying the input parameter. Using "--rm" will remove the container after it exits.
-docker run --rm helloworldconsole:stirtrek2017 "mike"
+docker run --rm helloworldconsole:windevug "mike"
 
 # Show the container is not available
 docker ps -a
