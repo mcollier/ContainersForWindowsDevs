@@ -28,7 +28,7 @@ namespace HelloWorldWithDatabase.Controllers
                     response = await httpClient.SendAsync(request);
                 }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 // TODO: yeah . . . this is bad.
 

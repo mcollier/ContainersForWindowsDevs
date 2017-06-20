@@ -14,6 +14,8 @@ services:
     build:
       context: .\HelloWorldWithDatabase
       dockerfile: Dockerfile
+    environment:
+      CONNECTION_STRING: "Server=db;Database=SampleDB01;User ID=sa; Password=Password123;Integrated Security=False"
     depends_on:
       - "db"
 
